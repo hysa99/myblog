@@ -134,8 +134,8 @@ USE_TZ = True
 STATIC_ROOT = BASE_DIR / "staticfiles" # Example for static files
 STATIC_URL = '/staticfiles/'  # Example for static files
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Example for user-uploaded media
-MEDIA_URL = '/media/'  # Example for user-uploaded media
+MEDIA_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Example for user-uploaded media
+MEDIA_URL = '/staticfiles/'  # Example for user-uploaded media
 
 
 
