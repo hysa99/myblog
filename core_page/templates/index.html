@@ -1,0 +1,285 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %}{{title}}{{" | "|escape}}{% endblock %}
+
+
+
+{% block content %}
+
+<main class="flex flex-col md:flex-row gap-8 px-8 py-8 bg-cover bg-center items-center justify-center rounded-full">
+  <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+    {% for item in blog_items %}
+    <div class="relative overflow-hidden rounded-lg shadow-lg">
+        <a href="{% url 'core_page:detail' item.id %}">
+          <img src="{{ item.images.url }}" alt="{{ item.title }}" class="object-cover w-full h-48 md:h-56 lg:h-64" />
+          <div class="absolute bottom-0 left-0 right-0 px-3 py-2 bg-black bg-opacity-75">
+            <span class="rounded-full text-white bg-blue-500 px-2 py-0.5 text-xs md:text-sm">{{ item.category.name }}</span>
+            <h2 class="text-lg font-bold text-white mt-1">{{ item.title }}</h2>
+            <p class="text-sm text-white">{{ item.published_at }}</p>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+</section>
+  </main>
+  <section class="px-4 py-8">
+    <div class="flex items-center mb-4">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="h-6 w-6 mr-2"
+      >
+        <path d="M2 20h.01"></path>
+        <path d="M7 20v-4"></path>
+        <path d="M12 20v-8"></path>
+        <path d="M17 20V8"></path>
+        <path d="M22 4v16"></path>
+      </svg>
+      <h2 class="text-2xl font-bold">Latest News</h2>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-1">
+      {% for item in blog_items_latest %}
+  <div class="grid">
+    <div class="w-full">
+      <a class="flex flex-1 h-90 py-3" href="{% url 'core_page:detail'  item.id %}"  style="border-bottom: 1px ridge gray; border-top: 1px ridge gray;">
+      <article class="flex-1  space-y-8 text-center rounded-xl">
+        <span class="rounded-xl text-green w-12 px-1 {{ item.category.color }}">{{ item.category.name }}</span>
+        <h2 class="text-xl font-bold text-green">{{ item.title }}</h2>
+        <p class="text-sm text-green dark:text-green">Posted on {{ item.published_at }}</p>
+      </article>
+    </a>
+    </div>
+  </div>
+    {% endfor %}
+    </div>
+   
+  </section>
+  <section class="px-4 py-8 bg-white dark:bg-gray-800">
+    <div class="flex items-center mb-4">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="h-6 w-6 mr-2"
+      >
+        <path d="M2 20h.01"></path>
+        <path d="M7 20v-4"></path>
+        <path d="M12 20v-8"></path>
+        <path d="M17 20V8"></path>
+        <path d="M22 4v16"></path>
+      </svg>
+      <h2 class="text-2xl font-bold">Trending News</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+      {% for item in blog_items %}
+      <div class="grid">
+        <div class="w-full relative">
+          <a class="flex flex-1 h-90" href="{% url 'core_page:detail' item.id %}">
+            <article class="flex-1 space-y-4 text-center rounded-xl relative">
+              <img src="{{ item.images.url }}" alt="{{ item.title }}" class="object-cover w-full h-48 md:h-56 lg:h-64" />
+              <span class="absolute top-0 left-0 rounded-xl text-white px-1 {{ item.category.color }}" style="width: auto;">{{ item.category.name }}</span>
+              <h2 class="text-xl font-bold text-blue-500 mt-2">{{ item.title }}</h2>
+              <p class="text-sm text-blue-500 dark:text-blue-500">Posted on {{ item.published_at }}</p>
+            </article>
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+  </section>
+  <section class="px-4 py-8 bg-green-400 dark:bg-green-900">
+    <div class="flex items-center mb-4">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="h-6 w-6 mr-2"
+      >
+        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
+      </svg>
+      <h2 class="text-2xl font-bold text-white">Top Reads of the Week</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+      {% for item in blog_items %}
+  <div class="grid">
+    <div class="w-full">
+      <a class="flex flex-1 h-90" href="{% url 'core_page:detail'  item.id %}">
+      <article class="flex-1  space-y-8 text-center rounded-xl">
+        <img src="{{ item.images.url }}" alt="{{ item.title }}" class="object-cover w-full h-48 md:h-56 lg:h-64" />
+        <span class="rounded-xl text-white w-12 px-1 {{ item.category.color }}">{{ item.category.name }}</span>
+        <h2 class="text-xl font-bold text-blue-500">{{ item.title }}</h2>
+        <p class="text-sm text-white dark:text-white">Posted on {{ item.published_at }}</p>
+      </article>
+    </a>
+    </div>
+  </div>
+    {% endfor %}
+    </div>
+  </section>
+  <section class="px-4 py-8 bg-white dark:bg-gray-800">
+    <div class="flex items-center mb-4">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="h-6 w-6 mr-2"
+      >
+        <line x1="8" x2="21" y1="6" y2="6"></line>
+        <line x1="8" x2="21" y1="12" y2="12"></line>
+        <line x1="8" x2="21" y1="18" y2="18"></line>
+        <line x1="3" x2="3.01" y1="6" y2="6"></line>
+        <line x1="3" x2="3.01" y1="12" y2="12"></line>
+        <line x1="3" x2="3.01" y1="18" y2="18"></line>
+      </svg>
+      <h2 class="text-2xl font-bold text-green-500">Most Read Categories</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+      <div class="border-r-2 border-gray-300 dark:border-gray-600">
+        <h3 class="text-xl font-bold mb-2 text-blue-500">Tech</h3>
+        <ul class="space-y-2">
+          {% for item in blog_items_tech %}
+          <li>
+            <a class="hover:underline" href="{% url 'core_page:detail'  item.id %}">
+              {{ item.title }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="border-r-2 border-gray-300 dark:border-gray-600">
+        <h3 class="text-xl font-bold mb-2 text-green-500">Businesss</h3>
+        <ul class="space-y-2">
+          {% for item in blog_items_business %}
+          <li>
+            <a class="hover:underline" href="{% url 'core_page:detail'  item.id %}">
+              {{ item.title }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xl font-bold mb-2 text-purple-500">Entertainment</h3>
+        <ul class="space-y-2">
+          {% for item in blog_items_entertainment %}
+          <li>
+            <a class="hover:underline" href="{% url 'core_page:detail'  item.id %}">
+              {{ item.title }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </section>
+  <footer class="">
+    <div class="bg-gray-800 text-white px-6 py-12 mt-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"><div>
+        <h3 class="text-lg font-semibold mb-2">Follow Us</h3>
+        <div class="flex space-x-4">
+          <a href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z">
+              </path>
+            </svg>
+          </a>
+          <a href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
+              <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
+              </path>
+            </svg>
+          </a>
+          <a href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5">
+              </rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z">
+              </path>
+              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5">
+              </line>
+            </svg>
+          </a>
+          <a href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+              </path>
+              <rect width="4" height="12" x="2" y="9">
+              </rect>
+              <circle cx="4" cy="4" r="2">
+              </circle>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-2">Subscribe to Our Newsletter</h3>
+        <form class="flex space-x-2" action="{% url 'core_page:subscriber' %}" method="post">
+          {% csrf_token %}
+          <input id="email"
+          name="email"
+          placeholder="usenname@example.com"
+          required=""
+          type="email" class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 flex-1 text-black" placeholder="Enter your email" type="email"/>
+          <button class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2" type="submit">Subscribe</button>
+        </form>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-2">Recent Posts</h3>
+        <div dir="ltr" class="relative overflow-hidden h-32" style="position: relative; --radix-scroll-area-corner-width: 0px; --radix-scroll-area-corner-height: 0px;">
+          <style>[data-radix-scroll-area-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-scroll-area-viewport]::-webkit-scrollbar{display:none}</style>
+          <div data-radix-scroll-area-viewport="" class="h-full w-full rounded-[inherit]" style="overflow: hidden scroll;">
+            <div style="min-width: 100%; display: table;">
+              <div class="space-y-2">
+                {% for item in blog_items_latest %}
+                <a class="block" href="#">
+                  <h4 class="font-medium">{{ item.title }}</h4>
+                  <p class="text-sm text-gray-300">{{ item.description | truncatewords:10  }}</p>
+                </a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-2">Contact Us</h3>
+        <p class="text-sm">Email: info@example.com</p>
+        <p class="text-sm">Phone: (123) 456-7890</p>
+        <p class="text-sm">Address: 123 Main St, City, State, 12345</p>
+      </div>
+    </div>
+    <div class="mt-8 text-center text-sm">
+  our Blog. All rights reserved.
+  <div>
+  </div>
+  </footer>
+
+{% endblock content %}
