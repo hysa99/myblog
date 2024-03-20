@@ -1,6 +1,5 @@
 from django.urls import path
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.urls import static  # Import static function from django.urls
+from django.urls import path, static  # Import static function from django.urls
 from blogg import settings
 from . import views
 
