@@ -32,7 +32,7 @@ DEBUG = False
 
 
 ALLOWED_HOSTS = [
-    'revelantd-032550f85773.herokuapp.com',
+    'himag-media-c536061a9412.herokuapp.com',
     '.vercel.app',
     '.now.sh',
     '*'
