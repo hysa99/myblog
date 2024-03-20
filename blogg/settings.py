@@ -80,7 +80,7 @@ TEMPLATES = [
     },
 ]
 
-wSGI_APPLICATION = 'blogg.wsgi.application'
+WSGI_APPLICATION = 'blogg.wsgi.application'
 
 # STORAGES = {
 #     "staticfiles": {
