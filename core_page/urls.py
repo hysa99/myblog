@@ -1,11 +1,12 @@
+from django.conf.urls.static import static
 from django.urls import path
-from django.urls import path, static  # Import static function from django.urls
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from blogg import settings
 from . import views
 
 
 
-app_name = 'core_page'
+app_name='core_page'
 
 
 
@@ -22,6 +23,6 @@ urlpatterns = [
     path("<int:pk>/", views.detail, name="detail"),
 ]
 
-# Add the static() function to serve media files
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 
