@@ -21,8 +21,6 @@ urlpatterns = [
     path('success_page/', views.subscriber, name="subscriber"),
     path('error_page/', views.subscriber, name="subscriber"),
     path("<int:pk>/", views.detail, name="detail"),
-]
-
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 

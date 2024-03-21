@@ -17,5 +17,5 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'blogg.settings')
 application = get_wsgi_application()
 
 # Serve static files with WhiteNoise
-application = WhiteNoise(application, root="/myblog-master/staticfiles/item_images/")
-application.add_files("/myblog-master/staticfiles/item_images/", prefix="more-files/")
+application = WhiteNoise(application, root="/media/item_images/")
+application.add_files("/media/item_images/", prefix="more-files/")
