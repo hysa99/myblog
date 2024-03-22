@@ -136,7 +136,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 STATIC_URL = '/item_images/'
 
 MEDIA_ROOT = BASE_DIR / 'media'
-MEDIA_URL = '/item_images/'
+MEDIA_URL = '/media/'
 
 
 

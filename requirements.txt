@@ -1,3 +1,4 @@
+pip install django
 asgiref==3.7.2
 Django==5.0.1
 pillow==8.0.0
