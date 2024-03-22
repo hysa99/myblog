@@ -33,6 +33,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     'himag-media-c536061a9412.herokuapp.com',
+    'enhs99.pythonanywhere.com',
     '.vercel.app',
     '.now.sh',
     '*'
